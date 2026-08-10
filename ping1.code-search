@@ -1,0 +1,17 @@
+# Query: ping1
+# Including: ./ACCV/website
+# ContextLines: 1
+
+3 results - 1 file
+
+ACCV/website/mirai-preview.html:
+  1009            <a href="https://pinglmlcv.github.io/pingliu264/" target="_blank" rel="noopener">Homepage</a>
+  1010:           <a href="mailto:ping1@unr.edu">Email</a>
+  1011          </p>
+
+  1125        </a>
+  1126:       <a class="contact-card" href="mailto:ping1@unr.edu">
+  1127          <span class="c-label">Program inquiries</span>
+  1128          <span class="c-name">Ping Liu</span>
+  1129:         <span class="c-mail">pingl@unr.edu</span>
+  1130        </a>
