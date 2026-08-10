@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIRAI Driving @ ACCV 2026</title>
+<meta name="description" content="MIRAI Driving: Multimodal Intelligence and Reasoning for Autonomous and Intelligent Driving — Workshop at ACCV 2026, Osaka, Japan, 15 December 2026.">
+<meta property="og:title" content="MIRAI Driving @ ACCV 2026">
+<meta property="og:description" content="Multimodal Intelligence and Reasoning for Autonomous and Intelligent Driving — ACCV 2026 Workshop, Osaka, Japan, 15 Dec 2026.">
+<meta property="og:image" content="assets/mirai-logo.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/mirai-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Web fonts are loaded without blocking render; the CSS falls back to a system stack. -->
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+</noscript>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<canvas id="sakura-canvas" aria-hidden="true"></canvas>
+
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">
+      <img src="assets/mirai-logo.jpg" alt="">
+      <span><b>MIRAI Driving</b><em>ACCV 2026</em></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">Aim &amp; Scope</a>
+      <a href="#topics">Topics</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#program">Program</a>
+      <a href="#organizers">Organizers</a>
+      <a href="#dates">Dates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-petal-glow" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-logo">
+      <img src="assets/mirai-logo.jpg" alt="MIRAI Driving workshop logo: cherry blossoms over an intelligent vehicle on a road in Osaka">
+    </div>
+    <div class="hero-text">
+      <p class="kicker"><span class="jp">未来</span> &nbsp;ACCV 2026 Workshop &nbsp;·&nbsp; Osaka, Japan</p>
+      <h1>MIRAI Driving</h1>
+      <p class="subtitle">Multimodal Intelligence and Reasoning for<br>Autonomous and Intelligent Driving</p>
+      <p class="hero-jp jp">春の道、車は世界を学びゆく</p>
+      <div class="hero-meta">
+        <div class="meta-chip">
+          <span class="label">Date</span>
+          <span class="value">Mon, 15 Dec 2026 · PM</span>
+        </div>
+        <div class="meta-chip">
+          <span class="label">Room</span>
+          <span class="value">Room 1007</span>
+        </div>
+        <div class="meta-chip">
+          <span class="label">Venue</span>
+          <span class="value">Grand Cube Osaka</span>
+        </div>
+        <div class="meta-chip">
+          <span class="label">Format</span>
+          <span class="value">Half-day · Invited</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#program">View Program</a>
+        <a class="btn btn-ghost" href="https://accv2026.org/workshops/" target="_blank" rel="noopener">ACCV 2026 Workshops ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0,64 C240,10 480,10 720,44 C960,78 1200,78 1440,32 L1440,90 L0,90 Z"></path></svg>
+  </div>
+</section>
+
+<main>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="section">
+  <div class="wrap">
+    <h2 class="section-title">Aim &amp; Scope</h2>
+    <div class="prose">
+      <p>
+        <b>MIRAI Driving</b> brings together researchers from computer vision, machine learning, robotics,
+        intelligent transportation systems, and industry to discuss recent advances in
+        <b>multimodal intelligence and reasoning for autonomous driving</b>.
+        Modern intelligent vehicles increasingly rely on diverse information sources such as cameras, LiDAR, radar,
+        HD maps, vehicle telemetry, user input, and V2X communication. These multimodal signals provide rich
+        information for perception, prediction, planning, control, and decision making.
+      </p>
+      <p>
+        Autonomous driving nevertheless remains challenging due to long-tail scenarios, rare safety-critical events,
+        domain shifts, complex human–vehicle interactions, and the need for robust reasoning in previously unseen
+        environments. Recent advances in <b>foundation models</b>, <b>large language models</b>,
+        <b>vision–language–action models</b>, and <b>world models</b> offer new opportunities to address these
+        challenges, reshaping the development of next-generation autonomous driving systems through stronger
+        multimodal perception, reasoning, planning, and interaction capabilities.
+      </p>
+      <p>
+        This workshop provides a focused forum for discussing multimodal intelligence, foundation models for driving,
+        world models, V2X intelligence, digital twins, trustworthy AI, human–vehicle interaction, and end-to-end
+        driving systems. It is organized as a <b>half-day invited event</b> featuring keynote talks, invited
+        presentations, and an interactive panel discussion — a format intended to encourage in-depth, high-quality
+        exchange between academia and industry rather than a competition or proceedings track.
+      </p>
+      <div class="note-card">
+        <span class="note-badge jp">ご案内</span>
+        <p>
+          <b>This is an invited workshop.</b> There is no call for papers and no proceedings track.
+          Attendance is open to all registered ACCV 2026 participants — no separate registration is required
+          beyond the main conference.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TOPICS ===================== -->
+<section id="topics" class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Topics of Interest</h2>
+    <p class="section-lead">Discussion at MIRAI Driving centers on, but is not limited to, the following themes.</p>
+    <div class="topic-grid">
+      <div class="topic-card"><span class="topic-icon">🌸</span><h3>Multimodal Perception &amp; Fusion</h3><p>Camera, LiDAR, radar, HD map, telemetry, and language fusion for robust scene understanding.</p></div>
+      <div class="topic-card"><span class="topic-icon">🧠</span><h3>Foundation Models for Driving</h3><p>LLMs, VLMs, and vision–language–action models applied to perception, planning, and control.</p></div>
+      <div class="topic-card"><span class="topic-icon">🌍</span><h3>World Models &amp; Simulation</h3><p>Generative world models, driving scene synthesis, and closed-loop evaluation.</p></div>
+      <div class="topic-card"><span class="topic-icon">📡</span><h3>V2X &amp; Cooperative Intelligence</h3><p>Vehicle-to-everything communication, cooperative perception, and multi-agent intelligence.</p></div>
+      <div class="topic-card"><span class="topic-icon">🏙️</span><h3>Digital Twins for Mobility</h3><p>High-fidelity digital twins for testing, validation, and intelligent transportation systems.</p></div>
+      <div class="topic-card"><span class="topic-icon">🛡️</span><h3>Trustworthy &amp; Safe Autonomy</h3><p>Robustness, uncertainty, interpretability, and safety under long-tail and low-quality data.</p></div>
+      <div class="topic-card"><span class="topic-icon">🤝</span><h3>Human–Vehicle Interaction</h3><p>Human-autonomy teaming, driver modeling, and interaction-aware decision making.</p></div>
+      <div class="topic-card"><span class="topic-icon">🚗</span><h3>End-to-End Driving Systems</h3><p>Unified differentiable pipelines from sensing to action, and embodied driving agents.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SPEAKERS ===================== -->
+<section id="speakers" class="section">
+  <div class="wrap">
+    <h2 class="section-title">Invited Keynote Speakers</h2>
+    <p class="section-lead">Two keynote speakers have been invited to present at MIRAI Driving.</p>
+    <div class="speaker-grid">
+
+      <article class="speaker-card">
+        <div class="speaker-head">
+          <div class="avatar jp" aria-hidden="true">未</div>
+          <div>
+            <h3>Dr. Ziran Wang</h3>
+            <p class="affil">Purdue University, USA</p>
+            <p class="role">Assistant Professor · Purdue Digital Twin Lab</p>
+          </div>
+        </div>
+        <p class="bio">
+          Dr. Ziran Wang leads the Purdue Digital Twin Lab. His research focuses on digital twins, autonomous driving,
+          intelligent transportation systems, and human-autonomy teaming. He received his Ph.D. from the University of
+          California, Riverside, and has authored more than 80 publications and 50 patent applications. His work has
+          received the U.S. Department of Transportation Dissertation Award and multiple SAE best paper awards.
+        </p>
+        <p class="tentative">Tentatively confirmed</p>
+      </article>
+
+      <article class="speaker-card">
+        <div class="speaker-head">
+          <div class="avatar jp" aria-hidden="true">来</div>
+          <div>
+            <h3>Dr. Runsheng Xu</h3>
+            <p class="affil">Waymo, USA</p>
+            <p class="role">Senior Research Scientist</p>
+          </div>
+        </div>
+        <p class="bio">
+          Dr. Runsheng Xu works on multimodal large language models for autonomous driving at Waymo. He received his
+          Ph.D. from UCLA and previously worked at Mercedes-Benz R&amp;D North America and OPPO R&amp;D US. His research
+          interests include autonomous driving, multimodal foundation models, diffusion models, and multi-agent
+          intelligence. He has published more than 50 papers in leading venues including CVPR, ICCV, ECCV, ICRA, and
+          IEEE Transactions, and has led influential open-source projects such as OpenCDA, OPV2V, V2V4Real, V2X-DiT,
+          and WOD-E2E.
+        </p>
+        <p class="tentative">Tentatively confirmed</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROGRAM ===================== -->
+<section id="program" class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Program</h2>
+    <p class="section-lead">
+      Half-day in-person workshop on the afternoon of <b>Monday, 15 December 2026</b>, in
+      <b>Room 1007</b> at the Osaka International Convention Center (Grand Cube Osaka).
+      The tentative schedule is as follows.
+    </p>
+
+    <div class="program-card">
+      <ol class="program-list">
+        <li>
+          <span class="time">13:00 – 13:15</span>
+          <span class="item"><b>Opening and Welcome</b></span>
+        </li>
+        <li class="highlight">
+          <span class="time">13:15 – 13:55</span>
+          <span class="item"><b>Keynote Talk I</b><em>Dr. Ziran Wang — Purdue University</em></span>
+        </li>
+        <li class="highlight">
+          <span class="time">13:55 – 14:35</span>
+          <span class="item"><b>Keynote Talk II</b><em>Dr. Runsheng Xu — Waymo</em></span>
+        </li>
+        <li class="break">
+          <span class="time">14:35 – 14:55</span>
+          <span class="item"><b>Coffee Break</b> <span class="jp petal-inline">🌸</span></span>
+        </li>
+        <li>
+          <span class="time">14:55 – 15:30</span>
+          <span class="item"><b>Invited Talk I</b><em>To be announced</em></span>
+        </li>
+        <li>
+          <span class="time">15:30 – 16:05</span>
+          <span class="item"><b>Invited Talk II</b><em>To be announced</em></span>
+        </li>
+        <li>
+          <span class="time">16:05 – 16:30</span>
+          <span class="item"><b>Panel Discussion and Closing Remarks</b></span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="panel-note">
+      <h3>Panel Discussion</h3>
+      <p>
+        The panel will focus on open challenges and future directions in multimodal foundation models, world models,
+        V2X intelligence, embodied driving agents, and trustworthy autonomous driving.
+      </p>
+    </div>
+
+    <div class="venue-box">
+      <span class="venue-icon" aria-hidden="true">📍</span>
+      <div>
+        <b>Venue</b><br>
+        Osaka International Convention Center (Grand Cube Osaka) · 10th Floor, <b>Room 1007</b><br>
+        <span class="muted">Program is tentative and subject to change. Please check back for updates.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ORGANIZERS ===================== -->
+<section id="organizers" class="section">
+  <div class="wrap">
+    <h2 class="section-title">Organizers</h2>
+    <p class="section-lead">
+      Our organizing team has extensive research experience in computer vision, machine learning, autonomous driving,
+      intelligent transportation systems, and trustworthy AI, with publications in top-tier venues including CVPR,
+      ICCV, ECCV, NeurIPS, ICML, ICRA, IEEE TPAMI, IEEE TIV, and IEEE TITS.
+    </p>
+
+    <div class="org-grid">
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">胡</div>
+        <h3>Xianbiao Hu</h3>
+        <p class="affil">Pennsylvania State University, USA</p>
+        <p class="bio">Associate Professor leading the SmartMobility Lab; Managing Director of the <i>Journal of Intelligent Transportation Systems</i>. Research on intelligent transportation systems, connected and autonomous vehicles, and AI-enabled mobility.</p>
+        <p class="links">
+          <a href="https://www.cee.psu.edu/department/directory-detail-g.aspx?q=xzh5180" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:xbhu@psu.edu">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">李</div>
+        <h3>Guang Li</h3>
+        <p class="affil">Hokkaido University, Japan</p>
+        <p class="bio">Assistant Professor working on machine learning, computer vision, and dataset distillation. Recipient of the 2024 IEEE Sapporo YP Best Researcher Award; co-organizer of the first CVPR Workshop on Dataset Distillation.</p>
+        <p class="links">
+          <a href="https://www-lmd.ist.hokudai.ac.jp/member/guang-li/" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:guang@lmd.ist.hokudai.ac.jp">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">李</div>
+        <h3>Xiaopeng Li</h3>
+        <p class="affil">University of Wisconsin–Madison, USA</p>
+        <p class="bio">Harvey D. Spangler Professor directing the USDOT Rural Autonomous Vehicle Program for People Movement. Fellow of ASCE and Senior Member of IEEE; editor for Transportation Research Part E, IEEE TITS, and IEEE ITSM.</p>
+        <p class="links">
+          <a href="https://engineering.wisc.edu/directory/profile/xiaopeng-li/" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:xli2485@wisc.edu">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">劉</div>
+        <h3>Ping Liu</h3>
+        <p class="affil">University of Nevada, Reno, USA</p>
+        <p class="bio">Assistant Professor working on computer vision, multimodal learning, generative AI, trustworthy machine learning, and autonomous systems. More than 80 papers in leading conferences and journals.</p>
+        <p class="links">
+          <a href="https://pinglmlcv.github.io/pingliu264/" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:ping1@unr.edu">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">龍</div>
+        <h3>Keke Long</h3>
+        <p class="affil">Rutgers University, USA</p>
+        <p class="bio">Incoming Assistant Professor focusing on trustworthy artificial intelligence in transportation, connected and automated vehicles, and digital twins. More than 30 papers in leading transportation journals.</p>
+        <p class="links">
+          <a href="https://scholar.google.com/citations?user=zcTxZZ8AAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+          <a href="mailto:klong23@wisc.edu">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">呂</div>
+        <h3>Chen Lv</h3>
+        <p class="affil">Nanyang Technological University, Singapore</p>
+        <p class="bio">Associate Professor and founder of the Automated Driving and Human-Machine System (AutoMan) Research Lab. Research on advanced vehicle control, autonomous driving, and intelligent transportation systems.</p>
+        <p class="links">
+          <a href="https://lvchen.wixsite.com/automan" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:lyuchen@ntu.edu.sg">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">于</div>
+        <h3>Hongkai Yu</h3>
+        <p class="affil">University of Tennessee, Knoxville, USA</p>
+        <p class="bio">Associate Professor and Associate Editor for IEEE Transactions on Intelligent Vehicles, IEEE Open Journal of Intelligent Transportation Systems, and Green Energy and Intelligent Transportation. More than 80 papers in venues including CVPR, ICCV, AAAI, ICRA, and ACM MM.</p>
+        <p class="links">
+          <a href="https://cis.csuohio.edu/~h.yu/" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:h.yu19@csuohio.edu">Email</a>
+        </p>
+      </article>
+
+      <article class="org-card">
+        <div class="org-avatar jp" aria-hidden="true">張</div>
+        <h3>Tianyun Zhang</h3>
+        <p class="affil">Cleveland State University, USA</p>
+        <p class="bio">Assistant Professor working on computer vision, machine learning, foundation models, and trustworthy AI. More than 40 papers in top-tier conferences and journals including NeurIPS, CVPR, ICCV, ECCV, and AAAI.</p>
+        <p class="links">
+          <a href="https://sites.google.com/view/tianyun-zhang" target="_blank" rel="noopener">Homepage</a>
+          <a href="mailto:t.zhang85@csuohio.edu">Email</a>
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DATES ===================== -->
+<section id="dates" class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Important Dates</h2>
+    <div class="timeline">
+      <div class="tl-item done">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body"><b>Workshop website launch</b><span>August 2026</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body"><b>Final program announced</b><span>November 2026</span></div>
+      </div>
+      <div class="tl-item accent">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body"><b>MIRAI Driving Workshop</b><span>15 December 2026 · PM · Room 1007</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body"><b>ACCV 2026</b><span>14–18 December 2026 · Osaka, Japan</span></div>
+      </div>
+    </div>
+    <p class="muted center">
+      As an invited workshop, MIRAI Driving has no submission or notification deadlines.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="section">
+  <div class="wrap narrow">
+    <h2 class="section-title">Contact</h2>
+    <p class="prose center">
+      For questions about the MIRAI Driving workshop, please contact the organizing committee.
+    </p>
+    <div class="contact-cards">
+      <a class="contact-card" href="mailto:h.yu19@csuohio.edu">
+        <span class="c-label">Primary contact</span>
+        <span class="c-name">Hongkai Yu</span>
+        <span class="c-mail">h.yu19@csuohio.edu</span>
+      </a>
+      <a class="contact-card" href="mailto:ping1@unr.edu">
+        <span class="c-label">Program inquiries</span>
+        <span class="c-name">Ping Liu</span>
+        <span class="c-mail">ping1@unr.edu</span>
+      </a>
+    </div>
+    <p class="center" style="margin-top:2rem;">
+      <a class="btn btn-primary" href="https://accv2026.org/workshops/" target="_blank" rel="noopener">ACCV 2026 Workshops ↗</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img class="footer-logo" src="assets/mirai-logo.jpg" alt="">
+    <p class="footer-title"><b>MIRAI Driving</b> — Multimodal Intelligence and Reasoning for Autonomous and Intelligent Driving</p>
+    <p class="footer-sub">Workshop at the Asian Conference on Computer Vision (ACCV 2026) · Osaka, Japan · 15 December 2026</p>
+    <p class="footer-jp jp">春の道、車は世界を学びゆく</p>
+    <p class="footer-copy">© 2026 MIRAI Driving Workshop. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="assets/sakura.js"></script>
+</body>
+</html>
