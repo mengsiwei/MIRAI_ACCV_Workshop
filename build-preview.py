@@ -29,17 +29,24 @@ def read(name):
         return fh.read()
 
 
-def logo_data_uri():
-    """Downscale the logo and return it as a data: URI."""
-    path = os.path.join(HERE, "assets", "mirai-logo.jpg")
-    try:
-        from PIL import Image
-        im = Image.open(path).convert("RGB").resize((LOGO_PX, LOGO_PX), Image.LANCZOS)
-        buf = io.BytesIO()
-        im.save(buf, "JPEG", quality=LOGO_QUALITY, optimize=True, progressive=True)
-        raw = buf.getvalue()
-    except ImportError:
-        sys.stderr.write("Pillow not found - inlining the logo at full size.\n")
+def data_uri(rel, cap=None):
+    """Return an image as a data: URI, optionally capping its longest side."""
+    path = os.path.join(HERE, rel)
+    raw = None
+    if cap:
+        try:
+            from PIL import Image
+            im = Image.open(path).convert("RGB")
+            if max(im.size) > cap:
+                scale = cap / max(im.size)
+                im = im.resize((round(im.width * scale), round(im.height * scale)),
+                               Image.LANCZOS)
+            buf = io.BytesIO()
+            im.save(buf, "JPEG", quality=LOGO_QUALITY, optimize=True, progressive=True)
+            raw = buf.getvalue()
+        except ImportError:
+            sys.stderr.write("Pillow not found - inlining %s at full size.\n" % rel)
+    if raw is None:
         with open(path, "rb") as fh:
             raw = fh.read()
     return "data:image/jpeg;base64," + base64.b64encode(raw).decode("ascii")
@@ -49,7 +56,6 @@ def main():
     html = read("index.html")
     css = read(os.path.join("assets", "style.css"))
     js = read(os.path.join("assets", "sakura.js"))
-    logo = logo_data_uri()
 
     # The host wraps the file in its own <!doctype>/<head>/<body>, so keep only
     # what lives inside <body> - plus the <title>, which names the page.
@@ -65,7 +71,11 @@ def main():
         '<script src="assets/sakura.js"></script>',
         "<script>\n" + js + "\n</script>",
     )
-    body = body.replace('src="assets/mirai-logo.jpg"', 'src="%s"' % logo)
+    # Every image has to travel inside the file, so inline each one exactly once.
+    for rel in sorted(set(re.findall(r'src="(assets/[^"]+\.(?:jpe?g|png))"', body))):
+        # The logo is displayed large; headshots are small circles.
+        cap = LOGO_PX if "mirai-logo" in rel else 320
+        body = body.replace('src="%s"' % rel, 'src="%s"' % data_uri(rel, cap))
 
     if "assets/" in body:
         leftover = sorted(set(re.findall(r'["\'](assets/[^"\']+)', body)))

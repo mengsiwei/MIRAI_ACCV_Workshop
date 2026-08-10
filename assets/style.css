@@ -409,14 +409,13 @@ a:hover { text-decoration: underline; }
 .speaker-head { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 1rem; }
 .avatar {
   flex: none;
-  width: 72px; height: 72px;
-  display: grid;
-  place-items: center;
+  width: 88px; height: 88px;
   border-radius: 50%;
-  font-size: 1.9rem;
-  color: #fff;
   background: linear-gradient(140deg, var(--sakura-400), var(--indigo-500));
   box-shadow: 0 0 0 4px var(--sakura-100);
+  /* Headshots vary in aspect ratio; bias the crop upward so faces stay centred. */
+  object-fit: cover;
+  object-position: center 25%;
 }
 .speaker-card h3 { margin: 0; font-size: 1.2rem; color: var(--indigo-900); }
 .speaker-card .affil { margin: .2rem 0 0; font-size: .93rem; font-weight: 600; color: var(--sakura-600); }
@@ -517,15 +516,13 @@ a:hover { text-decoration: underline; }
 }
 .org-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--sakura-200); }
 .org-avatar {
-  width: 66px; height: 66px;
+  width: 92px; height: 92px;
   margin: 0 auto .9rem;
-  display: grid;
-  place-items: center;
   border-radius: 50%;
-  font-size: 1.7rem;
-  color: var(--sakura-600);
   background: linear-gradient(140deg, var(--sakura-100), var(--lav-100));
   box-shadow: 0 0 0 4px #fff, 0 0 0 5px var(--sakura-200);
+  object-fit: cover;
+  object-position: center 25%;
 }
 .org-card h3 { margin: 0; font-size: 1.1rem; color: var(--indigo-900); }
 .org-card .affil { margin: .25rem 0 .8rem; font-size: .88rem; font-weight: 600; color: var(--sakura-600); }
@@ -542,6 +539,30 @@ a:hover { text-decoration: underline; }
   transition: background .2s ease, color .2s ease;
 }
 .org-card .links a:hover { background: var(--sakura-500); color: #fff; text-decoration: none; }
+
+/* Secondary committee roles, set below the organizing committee. */
+.subsection-title {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 2.8rem 0 1.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--indigo-700);
+}
+.subsection-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sakura-200), transparent);
+}
+/* Two cards would stretch oddly across the full grid width, so cap and centre them. */
+.org-grid-chairs {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: 620px;
+  margin-inline: auto;
+}
 
 /* ---------- Timeline ---------- */
 .timeline {
