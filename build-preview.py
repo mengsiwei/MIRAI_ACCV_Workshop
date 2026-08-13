@@ -67,9 +67,11 @@ def main():
     body = body.group(1).strip()
 
     # External stylesheets and scripts would be blocked; inline them instead.
-    body = body.replace(
-        '<script src="assets/sakura.js"></script>',
-        "<script>\n" + js + "\n</script>",
+    # The tag may carry a ?v= cache buster, so match it loosely.
+    body = re.sub(
+        r'<script src="assets/sakura\.js[^"]*"></script>',
+        lambda m: "<script>\n" + js + "\n</script>",
+        body,
     )
     # Every image has to travel inside the file, so inline each one exactly once.
     for rel in sorted(set(re.findall(r'src="(assets/[^"]+\.(?:jpe?g|png))"', body))):
