@@ -229,11 +229,72 @@
     });
   }
 
+  /* ---------------------------------------------------------
+     5. Speaker bios — collapse long text, expand on demand
+     --------------------------------------------------------- */
+  function initBioToggles() {
+    var LINES = 5;
+    var bios = document.querySelectorAll('.speaker-card .bio');
+
+    Array.prototype.forEach.call(bios, function (bio, i) {
+      if (bio.dataset.collapsible) return;
+
+      var lineHeight = parseFloat(window.getComputedStyle(bio).lineHeight) || 24;
+      var collapsed = Math.round(lineHeight * LINES);
+      if (bio.scrollHeight <= collapsed + 4) return;   // already short enough
+
+      bio.dataset.collapsible = '1';
+      if (!bio.id) bio.id = 'speaker-bio-' + (i + 1);
+      bio.classList.add('collapsible', 'is-clamped');
+      bio.style.maxHeight = collapsed + 'px';
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bio-toggle';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', bio.id);
+      btn.textContent = 'Read more';
+      bio.parentNode.insertBefore(btn, bio.nextSibling);
+
+      // While expanded the height is left unconstrained so the card still
+      // reflows correctly when the window is resized.
+      bio.addEventListener('transitionend', function (e) {
+        if (e.propertyName === 'max-height' &&
+            btn.getAttribute('aria-expanded') === 'true') {
+          bio.style.maxHeight = 'none';
+        }
+      });
+
+      btn.addEventListener('click', function () {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          bio.style.maxHeight = bio.scrollHeight + 'px';   // fix the start value
+          void bio.offsetHeight;                           // force a reflow
+          bio.style.maxHeight = collapsed + 'px';
+          bio.classList.add('is-clamped');
+          btn.textContent = 'Read more';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          bio.classList.remove('is-clamped');
+          btn.textContent = 'Show less';
+          btn.setAttribute('aria-expanded', 'true');
+          // No transition means no transitionend, so release the height now.
+          bio.style.maxHeight = reduceMotion ? 'none' : bio.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
   function boot() {
     initSakura();
     initNav();
     initScrollSpy();
     initReveal();
+    initBioToggles();
+    // Web fonts can change how many lines a bio takes; re-check once they land.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(initBioToggles);
+    }
   }
 
   if (document.readyState === 'loading') {
