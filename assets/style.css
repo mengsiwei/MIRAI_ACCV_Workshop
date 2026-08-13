@@ -479,17 +479,6 @@ a:hover { text-decoration: underline; }
   .bio-toggle::after { transition: none; }
 }
 
-.tentative {
-  display: inline-block;
-  margin: 1rem 0 0;
-  padding: .2rem .65rem;
-  font-size: .76rem;
-  font-weight: 600;
-  color: var(--indigo-700);
-  background: var(--lav-100);
-  border-radius: 999px;
-}
-
 /* ---------- Program ---------- */
 .program-card {
   background: #fff;
