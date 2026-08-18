@@ -403,12 +403,17 @@ a:hover { text-decoration: underline; }
 .topic-card p { margin: 0; font-size: .9rem; color: var(--ink-mute); line-height: 1.6; }
 
 /* ---------- Speakers ---------- */
+/* One speaker per row, so an odd speaker count never leaves a stranded card. */
 .speaker-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 .speaker-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.6rem;
+  align-items: start;
   padding: 1.7rem;
   background: #fff;
   border: 1px solid var(--line);
@@ -417,10 +422,9 @@ a:hover { text-decoration: underline; }
   transition: transform .22s ease, box-shadow .22s ease;
 }
 .speaker-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.speaker-head { display: flex; gap: 1.1rem; align-items: center; margin-bottom: 1rem; }
 .avatar {
   flex: none;
-  width: 88px; height: 88px;
+  width: 112px; height: 112px;
   border-radius: 50%;
   background: linear-gradient(140deg, var(--sakura-400), var(--indigo-500));
   box-shadow: 0 0 0 4px var(--sakura-100);
@@ -431,7 +435,14 @@ a:hover { text-decoration: underline; }
 .speaker-card h3 { margin: 0; font-size: 1.2rem; color: var(--indigo-900); }
 .speaker-card .affil { margin: .2rem 0 0; font-size: .93rem; font-weight: 600; color: var(--sakura-600); }
 .speaker-card .role { margin: .1rem 0 0; font-size: .85rem; color: var(--ink-mute); }
-.speaker-card .bio { margin: 0; font-size: .92rem; color: var(--ink-soft); line-height: 1.68; }
+/* Full-width rows make for very long measures, so cap the bio at a readable width. */
+.speaker-card .bio {
+  margin: .9rem 0 0;
+  max-width: 82ch;
+  font-size: .92rem;
+  color: var(--ink-soft);
+  line-height: 1.68;
+}
 
 /* Long bios are collapsed to a few lines and expanded on demand.
    The collapsible class is added by JS, so the full text stays visible
@@ -750,6 +761,9 @@ a:hover { text-decoration: underline; }
   .nav-links a { padding: .7rem .5rem; border-radius: 8px; }
   .program-list li { grid-template-columns: 1fr; gap: .2rem; }
   .org-card .bio { text-align: center; }
+  /* Not enough room for a portrait column — stack the avatar above the text. */
+  .speaker-card { grid-template-columns: 1fr; gap: 1rem; }
+  .avatar { width: 92px; height: 92px; }
 }
 
 @media (max-width: 480px) {
