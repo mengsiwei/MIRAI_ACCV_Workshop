@@ -345,7 +345,16 @@ a:hover { text-decoration: underline; }
 }
 
 .prose { max-width: 78ch; }
-.prose p { margin: 0 0 1.15rem; color: var(--ink-soft); }
+/* Justified body copy, with automatic hyphenation so word spacing stays even
+   as the measure shrinks on narrower viewports. */
+.prose p {
+  margin: 0 0 1.15rem;
+  color: var(--ink-soft);
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 .prose b { color: var(--ink); }
 
 .note-card {
@@ -768,6 +777,8 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 480px) {
   .wrap, .nav-inner { width: calc(100% - 2rem); }
+  /* Too narrow to justify without rivers of white space — go ragged-right. */
+  .prose p { text-align: left; -webkit-hyphens: none; hyphens: none; }
   .hero-meta { gap: .5rem; }
   .meta-chip { padding: .45rem .75rem; }
 }
